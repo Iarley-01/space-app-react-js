@@ -17,7 +17,7 @@ const BarraLateral = () => {
           <ItemNavegacao
             iconeAtivo="icones/home-ativo.png"
             iconeInativo="icones/home-inativo.png"
-            ativo
+            ativo = {true}
           >
             Início
           </ItemNavegacao>
@@ -25,7 +25,7 @@ const BarraLateral = () => {
             iconeAtivo="icones/mais-vistas-ativo.png"
             iconeInativo="icones/mais-vistas-inativo.png"
           >
-            
+            Mais Vistas
           </ItemNavegacao>
         </ListaEstilizada>
       </nav>
