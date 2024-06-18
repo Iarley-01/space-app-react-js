@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { styled } from 'styled-components';
 
 import EstilosGlobais from './componentes/EstilosGlobais';
@@ -5,6 +7,8 @@ import Cabecalho from './componentes/Cabecalho';
 import BarraLateral from './componentes/BarraLateral';
 import Banner from './componentes/Banner';
 import bannerBackground from './assets/banner.png';
+
+import fotos from './fotos.json';
 
 import Galeria from './componentes/Galeria';
 
@@ -32,6 +36,8 @@ const ConteudoGaleria = styled.section`
 `
 
 function App() {
+  
+  const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
 
   return (
     <FundoGradiente>
@@ -45,7 +51,7 @@ function App() {
               texto='A galeria mais completa de fotos do espaço!'
               backgroundImage={bannerBackground}
             />
-            <Galeria />
+            <Galeria fotos={fotosDaGaleria}/>
           </ConteudoGaleria>
           
         </MainContainer>
