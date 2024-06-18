@@ -1,11 +1,31 @@
 import { styled } from 'styled-components';
 
 const ImagemFotoEstilizada = styled.figure`
-  width: 448px;
-  border-radius: 20px;
-  overflow: hidden;
-  & img {
+  width: ${props => props.$expandida ? '90%' : '460px'};
+  max-width: 100%;
+  & > img {
     width: 100%;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  figcaption {
+    background-color: #001634;
+    border-radius: 0 0 20px 20px; 
+    color: #FFFFFF;
+    box-sizing: border-box;
+    padding: 12px;
+    h3 {
+      font-family: 'GandhiSansBold';
+    }
+    
+    h4 {
+      flex-grow: 1;
+    }
+    
+    h3, h4 {
+      margin: 0;
+      font-size: 16px;
+    }
   }
 `
 
@@ -38,11 +58,11 @@ const Imagem = ({foto}) => {
   return (
     <ImagemFotoEstilizada>
       <img src={foto.path} alt={foto.titulo} />
-      <FotoLegendaEstilizada>
+      <figcaption>
         <FotoLegendaContainer>
           <h3>{foto.titulo}</h3>
           <FotoRodape>
-            <p>{foto.fonte}</p>
+            <h4>{foto.fonte}</h4>
             <FotoBotoes>
 
             <button><img src="/icones/favorito.png" alt="Icone Coração" /></button>
@@ -52,7 +72,7 @@ const Imagem = ({foto}) => {
         </FotoLegendaContainer>
         
         
-      </FotoLegendaEstilizada>
+      </figcaption>
     </ImagemFotoEstilizada>
   );
 }
