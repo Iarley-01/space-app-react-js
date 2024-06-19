@@ -6,6 +6,7 @@ const ContainerTags = styled.div`
   display: flex;
   align-items: center;
   gap: 64px;
+  margin-top: 56px;
 `
 
 const TituloTag = styled.h3`

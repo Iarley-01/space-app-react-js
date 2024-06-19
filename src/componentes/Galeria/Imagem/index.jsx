@@ -5,8 +5,11 @@ import BotaoIcone from '../../BotaoIcone';
 const ImagemFotoEstilizada = styled.figure`
   width: ${props => props.$expandida ? '90%' : '460px'};
   max-width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
   & > img {
-    width: 100%;
+    max-width: 100%;
     border-radius: 20px 20px 0 0;
   }
   

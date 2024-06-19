@@ -7,6 +7,7 @@ import Cabecalho from './componentes/Cabecalho';
 import BarraLateral from './componentes/BarraLateral';
 import Banner from './componentes/Banner';
 import ModalZoom from './componentes/ModalZoom';
+import Rodape from './componentes/Rodape';
 import bannerBackground from './assets/banner.png';
 
 import fotos from './fotos.json';
@@ -21,8 +22,8 @@ const FundoGradiente = styled.div`
 
 const AppContainer = styled.div`
   width: 1440px;
-  max-width: 100%; 
   margin: 0 auto;
+  max-width: 100%; 
 `
 
 const MainContainer = styled.main`
@@ -76,7 +77,7 @@ function App() {
           </ConteudoGaleria>
           
         </MainContainer>
-        
+        <Rodape />
       </AppContainer>
       <ModalZoom 
         foto={fotoSelecionada}

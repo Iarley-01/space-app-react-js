@@ -3,10 +3,9 @@ import { styled } from 'styled-components';
 const BannerEstilizado = styled.div`
   background-image: ${props => `url(${props.$backgroundImage})`};
   background-repeat: no-repeat; 
-  background-position: center;
   background-size: cover;
-  max-width: 1128px;
-  height: 328px;
+  max-width: 100%;
+  min-height: 328px;
   border-radius: 20px;
   display: flex;
   align-items: center;
