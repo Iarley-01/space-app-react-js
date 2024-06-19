@@ -1,5 +1,7 @@
 import { styled } from 'styled-components';
 
+import BotaoIcone from '../../BotaoIcone';
+
 const ImagemFotoEstilizada = styled.figure`
   width: ${props => props.$expandida ? '90%' : '460px'};
   max-width: 100%;
@@ -42,36 +44,25 @@ const FotoLegendaContainer = styled.div`
 const FotoRodape = styled.div`
   display: flex;
   justify-content: space-between;
-`
-
-const FotoBotoes = styled.div`
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  & button {
-    background-color: transparent;
-    border: none;
-  }
 `
 
-const Imagem = ({foto}) => {
+const Imagem = ({foto, expandida = false, aoZoomSolicitado}) => {
   return (
-    <ImagemFotoEstilizada>
+    <ImagemFotoEstilizada $expandida={expandida} id={`foto-${foto.id}`}>
       <img src={foto.path} alt={foto.titulo} />
       <figcaption>
-        <FotoLegendaContainer>
-          <h3>{foto.titulo}</h3>
-          <FotoRodape>
-            <h4>{foto.fonte}</h4>
-            <FotoBotoes>
-
-            <button><img src="/icones/favorito.png" alt="Icone Coração" /></button>
-            <button><img src="/icones/expandir.png" alt="Ícone expandir"/></button>
-            </FotoBotoes>
-          </FotoRodape>
-        </FotoLegendaContainer>
-        
-        
+        <h3>{foto.titulo}</h3>
+        <FotoRodape>
+          <h4>{foto.fonte}</h4>
+          
+          <BotaoIcone>
+            <img src="/icones/favorito.png" alt="Ícone Favorito"/>
+          </BotaoIcone>
+          {!expandida && <BotaoIcone aria-hidden={expandida} onClick={() => aoZoomSolicitado(foto)}>
+            <img src="/icones/expandir.png" alt="Ícone Expandir"/>
+          </BotaoIcone>}
+        </FotoRodape>
       </figcaption>
     </ImagemFotoEstilizada>
   );

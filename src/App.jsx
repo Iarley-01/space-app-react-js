@@ -6,6 +6,7 @@ import EstilosGlobais from './componentes/EstilosGlobais';
 import Cabecalho from './componentes/Cabecalho';
 import BarraLateral from './componentes/BarraLateral';
 import Banner from './componentes/Banner';
+import ModalZoom from './componentes/ModalZoom';
 import bannerBackground from './assets/banner.png';
 
 import fotos from './fotos.json';
@@ -38,6 +39,7 @@ const ConteudoGaleria = styled.section`
 function App() {
   
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
+  const [fotoSelecionada, setFotoSelecionada] = useState(null);
 
   return (
     <FundoGradiente>
@@ -51,13 +53,16 @@ function App() {
               texto='A galeria mais completa de fotos do espaço!'
               backgroundImage={bannerBackground}
             />
-            <Galeria fotos={fotosDaGaleria}/>
+            <Galeria
+              aoFotoSelecionada={foto => setFotoSelecionada(foto)}
+              fotos={fotosDaGaleria}
+            />
           </ConteudoGaleria>
           
         </MainContainer>
         
       </AppContainer>
-      
+      <ModalZoom foto={fotoSelecionada}/>
     </FundoGradiente>
   )
 }
