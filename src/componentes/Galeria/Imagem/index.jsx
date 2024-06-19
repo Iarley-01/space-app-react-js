@@ -47,7 +47,9 @@ const FotoRodape = styled.div`
   align-items: center;
 `
 
-const Imagem = ({foto, expandida = false, aoZoomSolicitado}) => {
+const Imagem = ({ foto, expandida = false, aoZoomSolicitado, aoAlternarFavorito }) => {
+  const iconeFavorito = foto.favorita ? '/icones/favorito-ativo.png' : '/icones/favorito.png';
+  
   return (
     <ImagemFotoEstilizada $expandida={expandida} id={`foto-${foto.id}`}>
       <img src={foto.path} alt={foto.titulo} />
@@ -56,8 +58,8 @@ const Imagem = ({foto, expandida = false, aoZoomSolicitado}) => {
         <FotoRodape>
           <h4>{foto.fonte}</h4>
           
-          <BotaoIcone>
-            <img src="/icones/favorito.png" alt="Ícone Favorito"/>
+          <BotaoIcone onClick={() => aoAlternarFavorito(foto)}>
+            <img src={iconeFavorito} alt="Ícone Favorito"/>
           </BotaoIcone>
           {!expandida && <BotaoIcone aria-hidden={expandida} onClick={() => aoZoomSolicitado(foto)}>
             <img src="/icones/expandir.png" alt="Ícone Expandir"/>
