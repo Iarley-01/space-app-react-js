@@ -41,6 +41,17 @@ function App() {
   
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
+  const[termoDeBusca, setTermoDeBusca] = useState('');
+  
+  const aoBuscarPorTermo = (event) => {
+    console.log(event.target.value);
+    setTermoDeBusca(event.target.value);
+  }
+  
+  const fotosFiltradas = fotosDaGaleria.filter(foto => foto.titulo.toLowerCase().includes(termoDeBusca.toLowerCase())
+  );
+  
+  console.log(fotosFiltradas);
   
   const aoAlternarFavorito = (foto) => {
     if (foto.id === fotoSelecionada?.id) {
@@ -61,7 +72,7 @@ function App() {
     <FundoGradiente>
       <EstilosGlobais />
       <AppContainer>
-        <Cabecalho />
+        <Cabecalho aoBuscarPorTermo={aoBuscarPorTermo}/>
         <MainContainer>
           <BarraLateral />
           <ConteudoGaleria>
@@ -72,7 +83,7 @@ function App() {
             <Galeria
               aoFotoSelecionada={foto => setFotoSelecionada(foto)}
               aoAlternarFavorito={aoAlternarFavorito}
-              fotos={fotosDaGaleria}
+              fotos={fotosFiltradas}
             />
           </ConteudoGaleria>
           
