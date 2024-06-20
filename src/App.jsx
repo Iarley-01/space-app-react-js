@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { styled } from 'styled-components';
 
@@ -42,14 +42,19 @@ function App() {
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
   const[termoDeBusca, setTermoDeBusca] = useState('');
+  const [fotosFiltradas, setFotosFiltradas] = useState(fotos);
   
   const aoBuscarPorTermo = (event) => {
     console.log(event.target.value);
     setTermoDeBusca(event.target.value);
   }
   
-  const fotosFiltradas = fotosDaGaleria.filter(foto => foto.titulo.toLowerCase().includes(termoDeBusca.toLowerCase())
-  );
+  useEffect(() => {
+    const resultado = fotosDaGaleria.filter(foto => foto.titulo.toLowerCase().includes(termoDeBusca.toLowerCase()));
+    setFotosFiltradas(resultado);
+  }, [termoDeBusca, fotosDaGaleria]);
+  /*const fotosFiltradas = fotosDaGaleria.filter(foto => foto.titulo.toLowerCase().includes(termoDeBusca.toLowerCase())
+  );*/
   
   console.log(fotosFiltradas);
   
@@ -60,12 +65,13 @@ function App() {
         favorita: !fotoSelecionada.favorita
       })
     }
-    setFotosDaGaleria(fotosDaGaleria.map(fotoDaGaleria => {
+    const novasFotos = fotosDaGaleria.map(fotoDaGaleria => {
       return {
         ...fotoDaGaleria,
         favorita: fotoDaGaleria.id === foto.id ? !foto.favorita : fotoDaGaleria.favorita
       }
-    }))
+    });
+    setFotosDaGaleria(novasFotos);
   }
 
   return (
