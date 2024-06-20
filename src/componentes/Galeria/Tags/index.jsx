@@ -34,12 +34,12 @@ const BotaoTag = styled.button`
     border-color: #C98CF1;
   }
 `
-const Tags = ({texto}) => {
+const Tags = ({texto, aoFiltrarPorTag}) => {
   return (
     <ContainerTags>
       <TituloTag>{texto}</TituloTag>
       <Div>
-        {tags.map(tag => <BotaoTag key={tag.id}>{tag.titulo}</BotaoTag>)}
+        {tags.map(tag => <BotaoTag onClick={() => aoFiltrarPorTag(tag.id)} key={tag.id}>{tag.titulo}</BotaoTag>)}
       </Div>
     </ContainerTags>
   );

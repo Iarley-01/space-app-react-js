@@ -43,21 +43,37 @@ function App() {
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
   const[termoDeBusca, setTermoDeBusca] = useState('');
   const [fotosFiltradas, setFotosFiltradas] = useState(fotos);
+  const [tag, setTag] = useState('');
   
   const aoBuscarPorTermo = (event) => {
-    console.log(event.target.value);
     setTermoDeBusca(event.target.value);
+  }
+  
+  const aoFiltrarPorTag = (tag) => {
+    console.log(`Tag Selecionada: ${tag}`)
+    setTag(tag);
   }
   
   useEffect(() => {
     const resultado = fotosDaGaleria.filter(foto => foto.titulo.toLowerCase().includes(termoDeBusca.toLowerCase()));
     setFotosFiltradas(resultado);
   }, [termoDeBusca, fotosDaGaleria]);
+  
+  useEffect(() => {
+    const resultado = fotosDaGaleria.filter(
+      foto => foto.tagId == tag
+    );
+    
+    
+    setFotosFiltradas(resultado);
+    if (tag == 0) {
+      setFotosFiltradas(fotosDaGaleria)
+    }
+  }, [tag, fotosDaGaleria])
   /*const fotosFiltradas = fotosDaGaleria.filter(foto => foto.titulo.toLowerCase().includes(termoDeBusca.toLowerCase())
   );*/
   
-  console.log(fotosFiltradas);
-  
+
   const aoAlternarFavorito = (foto) => {
     if (foto.id === fotoSelecionada?.id) {
       setFotoSelecionada({
@@ -89,6 +105,7 @@ function App() {
             <Galeria
               aoFotoSelecionada={foto => setFotoSelecionada(foto)}
               aoAlternarFavorito={aoAlternarFavorito}
+              aoFiltrarPorTag={aoFiltrarPorTag}
               fotos={fotosFiltradas}
             />
           </ConteudoGaleria>
