@@ -1,8 +1,21 @@
-# React + Vite
+# 🚀 Space App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esse projeto foi criado com [Vitejs](https://vitejs.dev/guide/) no curso de [React: Estilize componentes com Styled Components e manipule arquivos estáticos](https://cursos.alura.com.br/course/react-estilize-componentes-styled-components-manipule-arquivos-estaticos) da formação React com JavaScript da Alura.
 
-Currently, two official plugins are available:
+***
+## 🚀 Sobre o Projeto
+O projeto é uma aplicação que contém uma galeria de fotos do espaço.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Algumas Funcionalidades
+- Marcar fotos como favoritas.
+- Expandir imagem
+- Filtrar fotos por tag ou por nome
+
+*** 
+## 🚀 Ferramentas e Técnicas Utilizadas
+- ```Vite``` - Ferramenta de Build
+- ```React``` - Biblioteca JavaScript
+- ```Styled Components``` - Biblioteca para estilização de componentes
+- ```JavaScript``` - Principal linguagem de programação
+- ```useState```, ```useEffect``` - Hooks do React para controle e mudança de estado e reações a efeitos colaterais.
+-```Figma``` - Ferramenta de Design. [confira aqui o design](https://www.figma.com/design/M89oXvtfWUnKa7TdldnBiD)
