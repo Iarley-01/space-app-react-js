@@ -4,6 +4,10 @@ import search from './search.png';
 const ContainerEstilizado = styled.div`
   position: relative;
   display: inline-block;
+  @media(max-width: 740px){
+    display: flex;
+    width: 100%;
+  }
 `
 
 const InputEstilizado = styled.input`
